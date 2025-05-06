@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bootstrap Starter Template</title>
+  <title>Memory Game</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -104,7 +104,7 @@
   let generatedNumbers = [];
 
   const randomGenerate = () => {
-    generatedNumbers = []; // Reset the previous numbers
+    generatedNumbers = []; 
 
     for (let i = 1; i <= 6; i++) {
       let num = Math.floor(Math.random() * 30);
@@ -120,9 +120,10 @@
     // Hide numbers after 10 seconds
     setTimeout(() => {
       for (let i = 1; i <= 6; i++) {
-        document.getElementById('numberValue' + i).innerHTML = '❓';
+        document.getElementById('numberValue' + i).innerHTML = 'Guess'; // Hide numbers after 10 seconds
+        document.getElementById('numberValue' + i).style.color = 'white'; // Reset color
       }
-    }, 2000);
+    }, 4000);
   };
 
   // Check user guesses
@@ -140,8 +141,7 @@
     }
   };
   
-  // Generate cards dynamically with input fields
-  const numbers = [1, 2, 3, 4, 5, 6]; 
+  const numbers = [1,2,3,4,5,6];
   let id = 1;
   numbers.forEach(num => {
     const card = document.createElement('div');
