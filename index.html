@@ -28,7 +28,7 @@
     }
 
     .l-bg-cherry {
-      background: linear-gradient(to right, #493240, #f09) !important;
+      background: linear-gradient(to right, #493240, rgb(0, 0, 0)) !important;
       color: #fff;
     }
 
@@ -110,33 +110,30 @@
       let num = Math.floor(Math.random() * 30);
       generatedNumbers.push(num);
 
-      // Display the generated number in the card
       document.getElementById('numberValue' + i).innerHTML = num;
-      
-      // Clear the input field
+    
       document.getElementById('guess' + i).value = '';
     }
 
-    // Hide numbers after 10 seconds
+
     setTimeout(() => {
       for (let i = 1; i <= 6; i++) {
-        document.getElementById('numberValue' + i).innerHTML = 'Guess'; // Hide numbers after 10 seconds
-        document.getElementById('numberValue' + i).style.color = 'white'; // Reset color
+        document.getElementById('numberValue' + i).innerHTML = 'Guess'; 
+        document.getElementById('numberValue' + i).style.color = 'purple';
       }
     }, 4000);
   };
 
-  // Check user guesses
   const checkGuesses = () => {
     for (let i = 1; i <= 6; i++) {
       let userGuess = document.getElementById('guess' + i).value;
       
       if (userGuess == generatedNumbers[i - 1]) {
-        document.getElementById('numberValue' + i).innerHTML = generatedNumbers[i - 1]; // Reveal correct guesses
-        document.getElementById('numberValue' + i).style.color = 'lightgreen'; // Highlight correct
+        document.getElementById('numberValue' + i).innerHTML = "Correct!"; 
+        document.getElementById('numberValue' + i).style.color = 'lightgreen';
       } else {
-        document.getElementById('numberValue' + i).innerHTML = '❌'; // Mark incorrect guesses
-        document.getElementById('numberValue' + i).style.color = 'red'; // Highlight incorrect
+        document.getElementById('numberValue' + i).innerHTML = 'wrong'; 
+        document.getElementById('numberValue' + i).style.color = 'red'; 
       }
     }
   };
@@ -163,13 +160,13 @@
     const numberValue = document.createElement('h2');
     numberValue.className = 'd-flex align-items-center mb-0';
     numberValue.id = 'numberValue' + id;
-    numberValue.innerHTML = '❓';
+    numberValue.innerHTML = '';
   
     let inputField = document.createElement('input');
     inputField.type = 'number';
     inputField.className = 'form-control mt-2';
     inputField.id = 'guess' + id;
-    inputField.placeholder = 'Enter your guess';
+    inputField.placeholder = 'guess';
   
     data.appendChild(cardTitle);
     cardStatistic.appendChild(data);
